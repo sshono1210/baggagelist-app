@@ -34,7 +34,9 @@ class Webpack{
             },
             plugins:[
                 new webpack.optimize.UglifyJsPlugin()
-            ]
+            ],
+            dev: true,
+            devtool: "source-map"
         };
 
         gulp.src([`${this.path.src}assets/js/**/*.js`])
@@ -44,7 +46,7 @@ class Webpack{
 
     watch(tasks){
         gulp.watch([
-            `${this.path.src}assets/js/**/*.js`,
+            `${this.path.src}assets/js/**/*`,
         ],tasks)
     }
 }

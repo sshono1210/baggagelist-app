@@ -64,6 +64,14 @@ angularJS
 $ npm i angular angular-route --save
 ````
 
+vue.js 
+
+````np
+$ npm i vue vue-router --save
+````
+
+
+
 foundation
 
 ````
