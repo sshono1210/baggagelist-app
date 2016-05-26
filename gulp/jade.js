@@ -13,6 +13,9 @@ var neat = require("node-neat");
 class Jade{
     constructor(path){
         this.path = path;
+        this.target = [
+            `${this.path.src}assets/tmpl/**/*.jade`,
+        ]
     }
 
     build(options){
@@ -34,7 +37,6 @@ class Jade{
 
     watch(tasks){
         gulp.watch([
-            `${this.path.src}assets/tmpl/**/*.jade`,
         ],tasks)
     }
 }

@@ -14,6 +14,9 @@ class Sass{
 
     constructor(path){
         this.path = path;
+        this.target = [
+            `${this.path.src}assets/scss/**/*.scss`
+        ]
     }
 
     bourbon(){
@@ -34,7 +37,6 @@ class Sass{
 
     watch(tasks){
         gulp.watch([
-                `${this.path.src}assets/scss/**/*.scss`,
             ],tasks)
     }
 }

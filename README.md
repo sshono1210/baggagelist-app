@@ -28,13 +28,13 @@ $ npm i gulp gulp-load-plugins gulp-plumber gulp-notify run-sequence --save
 gulp sass
 
 ````
-$ npm i gulp-sass node-bourbon node-neat --save
+$ npm i gulp-sass node-bourbon node-neat gulp-pleeease --save
 ````
 
 gulp jade
 
 ````
-$ npm i gulp-jade node-bourbon node-neat --save
+$ npm i gulp-jade --save
 ````
 
 gulp webpack

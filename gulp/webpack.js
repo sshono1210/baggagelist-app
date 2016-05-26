@@ -13,6 +13,9 @@ class Webpack{
 
     constructor(path){
         this.path = path;
+        this.targets = [
+            `${this.path.src}assets/js/**/*`,
+        ]
     }
 
     build(){
@@ -42,12 +45,6 @@ class Webpack{
         gulp.src([`${this.path.src}assets/js/**/*.js`])
             .pipe($.webpack(config))
             .pipe(gulp.dest(`${this.path.dest}assets/js/`))
-    }
-
-    watch(tasks){
-        gulp.watch([
-            `${this.path.src}assets/js/**/*`,
-        ],tasks)
     }
 }
 
