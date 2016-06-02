@@ -1,42 +1,38 @@
 "use strict";
 
-var gulp = require("gulp");
-var $ = require("gulp-load-plugins")();
+const gulp = require("gulp");
+const $ = require("gulp-load-plugins")();
 
-var php = require("gulp-connect-php");
-var browserSync = require("browser-sync");
+const php = require("gulp-connect-php");
+const browserSync = require("browser-sync");
 
 /**
- * browser sync
  * npm install browser-sync gulp-connect-php --save
  */
-class BrowserSync{
+module.exports = (path) => {
+    var task = {};
 
-    constructor(path){
-        this.path = path;
-    }
+    task.start = (config) => {
+        config = Object.assign({},{
+            proxy: "127.0.0.1:8000",
+            open: "external",
+            //notify: false
+        },config);
 
-    start(){
-        php.server({
-            base: `${this.path.dest}`,
-        },function(){
-            browserSync({
-                proxy: "127.0.0.1:8000",
-                open: "external",
-                //notify: false
-            })
+        var server = {
+            base: `${path.dest}`,
+        }
+
+        php.server(server,() => {
+            browserSync(config)
         });
 
-        gulp.watch([
-            `${this.path.dest}/**/*`
-        ], function(){
+        gulp.watch(`${path.dest}/**/*`, () => {
             setTimeout(function(){
                 browserSync.reload();
             },500);
         });
     }
-}
 
-module.exports = function(path){
-    return new BrowserSync(path);
-};
+    return task;
+}

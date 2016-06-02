@@ -1,46 +1,39 @@
 "use strict";
 
-var gulp = require("gulp");
-var $ = require("gulp-load-plugins")();
+const gulp = require("gulp");
+const $ = require("gulp-load-plugins")();
 
-var bourbon = require("node-bourbon");
-var neat = require("node-neat");
+const bourbon = require("node-bourbon");
+const neat = require("node-neat");
 
 /**
- * SCSS with bourbon neat
- * npm i gulp-sass node-bourbon node-neat --save
+ * $ npm i gulp-sass node-bourbon node-neat gulp-pleeease --save
  */
-class Sass{
+module.exports = function(path){
 
-    constructor(path){
-        this.path = path;
-        this.target = [
-            `${this.path.src}assets/scss/**/*.scss`
-        ]
-    }
+    var task = {};
 
-    bourbon(){
+    task.target = [
+        `${path.src}assets/scss/**/*.scss`
+    ];
+
+    task.bourbon = (options) => {
+        options = Object.assign({},{
+            sourceMap: true,
+            includePaths: bourbon.with(neat.includePaths)
+        },options);
+
         gulp
             .src([
-                `${this.path.src}assets/scss/**/*.scss`,
-                `!${this.path.src}assets/scss/**/_*`,
+                `${path.src}assets/scss/**/*.scss`,
+                `!${path.src}assets/scss/**/_*`,
             ])
             .pipe($.plumber({
                 errorHandler: $.notify.onError('<%= error.message %>')
             }))
-            .pipe($.sass({
-                sourceMap: true,
-                includePaths: bourbon.with(neat.includePaths)
-            }))
-            .pipe(gulp.dest(`${this.path.dest}assets/css/`));
+            .pipe($.sass(options))
+            .pipe(gulp.dest(`${path.dest}assets/css/`));
     }
 
-    watch(tasks){
-        gulp.watch([
-            ],tasks)
-    }
-}
-
-module.exports = function(path){
-    return new Sass(path);
+    return task;
 };

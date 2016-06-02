@@ -1,25 +1,22 @@
 "use strict";
 
-var gulp = require("gulp");
-var $ = require("gulp-load-plugins")();
+const gulp = require("gulp");
+const $ = require("gulp-load-plugins")();
 
-var webpack = require("webpack");
+const webpack = require("webpack");
 
 /**
- * webpack configuration
- * npm i gulp-webpack babel-loader html-loader babel-core  babel-preset-es2015 --save
+ * $ npm i gulp-webpack babel-loader html-loader babel-core  babel-preset-es2015 --save
  */
-class Webpack{
+module.exports = (path) => {
+    var task = {};
 
-    constructor(path){
-        this.path = path;
-        this.targets = [
-            `${this.path.src}assets/js/**/*`,
-        ]
-    }
+    task.target = [
+        `${path.src}assets/js/**/*`,
+    ];
 
-    build(){
-        var config = {
+    task.build = (config) => {
+        config = Object.assign({},{
             "entry": {
                 "common": `${this.path.src}assets/js/common.js`
             },
@@ -40,14 +37,12 @@ class Webpack{
             ],
             dev: true,
             devtool: "source-map"
-        };
-
-        gulp.src([`${this.path.src}assets/js/**/*.js`])
+        },config);
+        gulp.src([`${path.src}assets/js/**/*.js`])
             .pipe($.webpack(config))
-            .pipe(gulp.dest(`${this.path.dest}assets/js/`))
+            .pipe(gulp.dest(`${path.dest}assets/js/`))
     }
-}
 
-module.exports = function(path){
-    return new Webpack(path);
-};
+
+    return task;
+}
