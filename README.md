@@ -67,7 +67,7 @@ $ npm i angular angular-route --save
 vue.js 
 
 ````
-$ npm i vue vue-router vuex-connect --save
+$ npm i vue vue-router vuex vuex-connect --save
 ````
 
 
