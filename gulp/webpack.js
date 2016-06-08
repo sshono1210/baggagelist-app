@@ -18,7 +18,7 @@ module.exports = (path) => {
     task.build = (config) => {
         config = Object.assign({},{
             "entry": {
-                "common": `${this.path.src}assets/js/common.js`
+                "common": `${path.src}assets/js/common.js`
             },
             "output": {
                 "filename": `[name].bundle.js`
