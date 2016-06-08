@@ -60,14 +60,14 @@ $ npm i jquery bootstrap normalize.css animate.css bootstrap --save
 
 angularJS
 
-````np
+````
 $ npm i angular angular-route --save
 ````
 
 vue.js 
 
-````np
-$ npm i vue vue-router --save
+````
+$ npm i vue vue-router vuex-connect --save
 ````
 
 
