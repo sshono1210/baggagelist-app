@@ -23,6 +23,9 @@ module.exports = (path) => {
             "output": {
                 "filename": `[name].bundle.js`
             },
+            externals: {
+//                "vue": "Vue"
+            },
             module: {
                 loaders: [
                     { test: /\.js/,exclude: /node_modules/, loader: "babel" ,query:{presets:"es2015"}},
@@ -33,7 +36,7 @@ module.exports = (path) => {
                 extensions:["",".js"]
             },
             plugins:[
-                new webpack.optimize.UglifyJsPlugin()
+                //new webpack.optimize.UglifyJsPlugin()
             ],
             dev: true,
             devtool: "source-map"
