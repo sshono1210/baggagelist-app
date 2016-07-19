@@ -16,7 +16,7 @@ module.exports = function(path){
         `${path.src}assets/tmpl/**/*.jade`,
     ];
 
-    task.build = (options={}) => {
+    task.build = (options) => {
         options = Object.assign({},{
             locals:{},
             pretty:true

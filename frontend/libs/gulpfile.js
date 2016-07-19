@@ -18,6 +18,7 @@ var tasks = {};
     "sass",
     "jade",
     "webpack",
+    "browserSync"
     //"wintersmith"
 ].forEach((taskName) => {
     tasks[taskName] = require(`./frontend/libs/gulp/${taskName}.js`)({src,dest})
@@ -26,7 +27,7 @@ var tasks = {};
 gulp.task("sass",()=> tasks.sass.bourbon());
 gulp.task("watch:sass",()=> gulp.watch(tasks.sass.target,["sass"]) );
 
-gulp.task("jade",()=> tasks.jade.build());
+gulp.task("jade",()=> tasks.jade.build({}));
 gulp.task("watch:jade",()=> gulp.watch(tasks.jade.target,["jade"]) );
 
 gulp.task("webpack",() => tasks.webpack.build());
