@@ -1,20 +1,55 @@
-doctype html
-html(lang="en")
-  head
-    title= pageTitle
-    script(type='text/javascript').
-      if (foo) {
-        bar(1 + 5)
-      }
-  body
-    h1 Jade - node template engine
-    #container.col
-      if youAreUsingJade
-        p You are amazing
-      else
-        p Get on it!
-      p.
-        Jade is a terse and simple
-        templating language with a
-        strong focus on performance
-        and powerful features.
+extends layout.jade
+
+block title
+  title リスト一覧
+
+block content
+  ul.collection
+    li.collection-item.avatar
+      a(href="./detail.html").tripContainer
+        i.material-icons.circle.blue insert emoticon
+        span.title アラスカ
+        .tags
+          .chip 冬
+          .chip 一人旅
+          .chip アラスカ
+          .chip 海外
+        p ２週間
+    li.collection-item.avatar
+      a(href="./detail.html").tripContainer
+        i.material-icons.circle.light-green insert emoticon
+        span.title ベトナム・タイ・スリランカ
+        .tags
+          .chip アジア
+          .chip 一人旅
+          .chip 海外
+        p １ヶ月
+    li.collection-item.avatar
+      a(href="./detail.html").tripContainer
+        i.material-icons.circle.grey insert emoticon
+        span.title 渡嘉敷島
+        .tags
+          .chip 海
+          .chip 国内
+          .chip 沖縄
+        p ３泊４日
+    li.collection-item.avatar
+      a(href="./detail.html").tripContainer
+        i.material-icons.circle.grey insert emoticon
+        span.title スペイン
+        .tags
+          .chip 海外
+          .chip 留学
+          .chip 夏
+        p １ヶ月
+    li.collection-item.avatar
+      a(href="./detail.html").tripContainer
+        i.material-icons.circle.grey insert emoticon
+        span.title NY
+        .tags
+          .chip 冬
+          .chip 海外
+          .chip 一人旅
+        p ２週間
+
+  <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
