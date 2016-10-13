@@ -1,0 +1,35 @@
+// all
+.newListBtn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+// リスト一覧
+.l-index {
+}
+
+
+// リスト詳細
+.l-detail {
+  .detail_placeDaysRow {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+  #detail_place,
+  #detail_days {
+    margin-bottom: 0;
+    border: none;
+  }
+}
+// リスト作成
+.l-new {
+  .new_headerIcon {
+    float: right;
+  }
+  .new_placeDaysRow {
+    margin-top: 20px;
+  }
+  .new_listItemForm {
+    margin-bottom: 0;
+  }
+}
