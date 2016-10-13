@@ -13,7 +13,7 @@ module.exports = function(path){
     var task = {};
 
     task.target = [
-        `${path.src}assets/tmpl/**/*.jade`,
+        `${path.src}assets/tmpl/**/*`,
     ];
 
     task.build = (options) => {
