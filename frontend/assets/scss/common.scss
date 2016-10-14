@@ -5,12 +5,12 @@
   right: 1rem;
 }
 // リスト一覧
-.l-index {
+#l-index {
 }
 
 
 // リスト詳細
-.l-detail {
+#l-detail {
   .detail_placeDaysRow {
     margin-top: 20px;
     margin-bottom: 0;
@@ -22,7 +22,7 @@
   }
 }
 // リスト作成
-.l-new {
+#l-new {
   .new_headerIcon {
     float: right;
   }

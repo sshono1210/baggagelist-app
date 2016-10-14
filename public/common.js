@@ -1,43 +1,34 @@
-var indexComponent = Vue.extend({
-    template: "#index"
+var Index = Vue.extend({
+    template: "#l-index"
 });
-var detailComponent = Vue.extend({
-    template: "#detail"
+var Detail = Vue.extend({
+    template: '#l-detail'
 });
+var New = Vue.extend({
+    template: '#l-new'
+});
+
 
 $(function(){
-    Vue.component("index-component", indexComponent);
-    Vue.component("detail-component", detailComponent);
-
-    var app = new Vue ({
+    Vue.component("index",Index);
+    Vue.component("detail",Detail);
+    Vue.component("new",New);
+    var app = new Vue({
         el: "#app",
         data: {
-            posts: [],
-            data: "true",
-            isSelected: false,
-            postDetail: []
+            current: "index"
         },
-        created: function(){
-            var xhr = $.get("./api/event.php", {start: 0});
-            xhr.success(function(data){
-                app.posts = data.events;
-            });
-            xhr.error(function(){
-                alert("通信に失敗しました"); //失敗時の処理
-            });
+        created: function () {
+            console.log("hello");
+
         },
         methods: {
             route: function(route){
-                app.isSelected = true;
-                app.postDetail = route;
-                console.log(app.postDetail);
-            },
-            isAcceptable:function(post){
-                return post.limit>post.accepted;
-            },
-            return: function(){
-                app.isSelected = false;
+                //app.current = route
             }
         }
     });
+
+
+
 });
