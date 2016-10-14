@@ -10,6 +10,8 @@ html(lang="en")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js")
         link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
         link(rel="stylesheet" href="./assets/css/common.css")
+        script(src="https://cdn.jsdelivr.net/vue/1.0.28/vue.min.js")
+        script(type="text/javascript" src="./common.js")
         script.
             $(function () {
                 $(".button-collapse").sideNav();
@@ -32,8 +34,9 @@ html(lang="en")
                     image: '', //optional
                     id: 1 //optional
                 };
-            })
+            });
     body
         include _header.html
-        block content
-        block floatBtn
+        #app
+            block content
+            block floatBtn
