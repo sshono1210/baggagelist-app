@@ -1,103 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
-      <title>リスト一覧</title>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-      <link rel="stylesheet" href="./assets/css/common.css">
-      <script src="https://code.jquery.com/jquery-2.1.1.min.js" integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-      <script src="https://unpkg.com/vue@2.0.3/dist/vue.min.js"></script>
-      <script src="https://unpkg.com/vue-router@2.0.1"></script>
-      <script type="text/javascript" src="./common.js"></script>
-  </head>
-  <body>
-  <nav class="l-header">
-    <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Baggage List</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="./index.html">リスト一覧</a></li>
-            <li><a href="./new.html">リスト作成</a></li>
-            <!--<li><a href="./modules.html">モジュール作成</a></li>-->
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
-            <li><a href="./index.html">リスト一覧</a></li>
-            <li><a href="./new.html">リスト作成</a></li>
-            <!--<li><a href="./modules.html">モジュール作成</a></li>-->
-        </ul>
-    </div>
-  </nav>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+  <!--<head>-->
+      <!--<meta charset="UTF-8">-->
+      <!--<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">-->
+      <!--<title>リスト一覧</title>-->
+      <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+      <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">-->
+      <!--<link rel="stylesheet" href="./assets/css/common.css">-->
+      <!--<script src="https://code.jquery.com/jquery-2.1.1.min.js" integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ=" crossorigin="anonymous"></script>-->
+      <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>-->
+      <!--<script src="https://unpkg.com/vue@2.0.3/dist/vue.min.js"></script>-->
+      <!--<script src="https://unpkg.com/vue-router@2.0.1"></script>-->
+      <!--<script type="text/javascript" src="./common.js"></script>-->
+  <!--</head>-->
+  <!--<body>-->
+  <!--<nav class="l-header">-->
+    <!--<div class="nav-wrapper">-->
+        <!--<a href="#!" class="brand-logo">Baggage List</a>-->
+        <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
+        <!--<ul class="right hide-on-med-and-down">-->
+            <!--<li><a href="./index.html">リスト一覧</a></li>-->
+            <!--<li><a href="./new.html">リスト作成</a></li>-->
+            <!--&lt;!&ndash;<li><a href="./modules.html">モジュール作成</a></li>&ndash;&gt;-->
+        <!--</ul>-->
+        <!--<ul class="side-nav" id="mobile-demo">-->
+            <!--<li><a href="./index.html">リスト一覧</a></li>-->
+            <!--<li><a href="./new.html">リスト作成</a></li>-->
+            <!--&lt;!&ndash;<li><a href="./modules.html">モジュール作成</a></li>&ndash;&gt;-->
+        <!--</ul>-->
+    <!--</div>-->
+  <!--</nav>-->
 
-    <div class="l-new">
-        <ul class="collapsible" data-collapsible="expandable">
-            <li>
-                <div class="collapsible-header active teal-text">
-                    旅情報
-                    <i class="material-icons new_headerIcon">keyboard_arrow_down</i>
-                </div>
-                <div class="collapsible-body">
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row new_placeDaysRow">
-                                <div class="input-field col s6">
-                                    <input placeholder="アラスカ" id="place" type="text" class="validate">
-                                    <label for="place">行き先</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input placeholder="２週間" id="days" type="text" class="validate">
-                                    <label for="place">日数</label>
-                                </div>
-                            </div>
-                            <div class="chips chips-placeholder">
-                                <input class="input" placeholder="タグ">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header active teal-text">
-                    もちものリスト
-                    <i class="material-icons new_headerIcon">keyboard_arrow_down</i>
-                </div>
-                <div class="collapsible-body">
-                    <ul class="collection">
-                        <li class="collection-item">
-                            <input class="new_listItemForm" type="text" placeholder="コンタクト">
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-        <button type="submit" class="doneBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">done_all</i></button>
-    </div>
-  <script>
-      $(function () {
-          $(".button-collapse").sideNav();
-          $('.chips').material_chip();
-          $('.chips-initial').material_chip({
-              data: [{
-                  tag: '海'
-              }, {
-                  tag: '山'
-              }, {
-                  tag: '川'
-              }]
-          });
-          $('.chips-placeholder').material_chip({
-              placeholder: 'タグ',
-              secondaryPlaceholder: 'タグ'
-          });
-          var chip = {
-              tag: 'chip content',
-              image: '', //optional
-              id: 1 //optional
-          };
-      });
-  </script>
+    <!--<div class="l-new">-->
+        <!--<ul class="collapsible" data-collapsible="expandable">-->
+            <!--<li>-->
+                <!--<div class="collapsible-header active teal-text">-->
+                    <!--旅情報-->
+                    <!--<i class="material-icons new_headerIcon">keyboard_arrow_down</i>-->
+                <!--</div>-->
+                <!--<div class="collapsible-body">-->
+                    <!--<div class="row">-->
+                        <!--<form class="col s12">-->
+                            <!--<div class="row new_placeDaysRow">-->
+                                <!--<div class="input-field col s6">-->
+                                    <!--<input placeholder="アラスカ" id="place" type="text" class="validate">-->
+                                    <!--<label for="place">行き先</label>-->
+                                <!--</div>-->
+                                <!--<div class="input-field col s6">-->
+                                    <!--<input placeholder="２週間" id="days" type="text" class="validate">-->
+                                    <!--<label for="place">日数</label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="chips chips-placeholder">-->
+                                <!--<input class="input" placeholder="タグ">-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class="collapsible-header active teal-text">-->
+                    <!--もちものリスト-->
+                    <!--<i class="material-icons new_headerIcon">keyboard_arrow_down</i>-->
+                <!--</div>-->
+                <!--<div class="collapsible-body">-->
+                    <!--<ul class="collection">-->
+                        <!--<li class="collection-item">-->
+                            <!--<input class="new_listItemForm" type="text" placeholder="コンタクト">-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <!--<button type="submit" class="doneBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">done_all</i></button>-->
+    <!--</div>-->
+  <!--<script>-->
+      <!--$(function () {-->
+          <!--$(".button-collapse").sideNav();-->
+          <!--$('.chips').material_chip();-->
+          <!--$('.chips-initial').material_chip({-->
+              <!--data: [{-->
+                  <!--tag: '海'-->
+              <!--}, {-->
+                  <!--tag: '山'-->
+              <!--}, {-->
+                  <!--tag: '川'-->
+              <!--}]-->
+          <!--});-->
+          <!--$('.chips-placeholder').material_chip({-->
+              <!--placeholder: 'タグ',-->
+              <!--secondaryPlaceholder: 'タグ'-->
+          <!--});-->
+          <!--var chip = {-->
+              <!--tag: 'chip content',-->
+              <!--image: '', //optional-->
+              <!--id: 1 //optional-->
+          <!--};-->
+      <!--});-->
+  <!--</script>-->
 
-  </body>
-</html>
+  <!--</body>-->
+<!--</html>-->

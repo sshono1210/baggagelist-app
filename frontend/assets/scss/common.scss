@@ -7,6 +7,7 @@
   right: 1rem;
 }
 // リスト詳細
+.edit_placeDaysRow,
 .detail_placeDaysRow {
   margin-top: 20px;
   margin-bottom: 0;
@@ -17,12 +18,15 @@
   border: none;
 }
 // リスト作成
+.edit_headerIcon,
 .new_headerIcon {
   float: right;
 }
+.edit_placeDaysRow,
 .new_placeDaysRow {
   margin-top: 20px;
 }
+.edit_listItemForm,
 .new_listItemForm {
   margin-bottom: 0;
 }

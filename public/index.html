@@ -20,12 +20,12 @@
             <a href="#!" class="brand-logo">Baggage List</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="./index.html">リスト一覧</a></li>
+                <li><a href="/">リスト一覧</a></li>
                 <li><a href="#/new">リスト作成</a></li>
                 <!--<li><a href="./modules.html">モジュール作成</a></li>-->
                 </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li><a href="./index.html">リスト一覧</a></li>
+                <li><a href="/">リスト一覧</a></li>
                 <li><a href="#/new">リスト作成</a></li>
                 <!--<li><a href="./modules.html">モジュール作成</a></li>-->
             </ul>
@@ -58,7 +58,7 @@
                       </a>
                   </li>
                   <li class="collection-item avatar">
-                      <a href="/#/detail" class="black-text">
+                      <a href="#/detail" class="black-text">
                           <i class="material-icons circle light-green">mode_edit</i>
                           <span class="title">アラスカ</span>
                           <div>
@@ -71,7 +71,7 @@
                       </a>
                   </li>
                   <li class="collection-item avatar">
-                      <a href="/#/detail" class="black-text">
+                      <a href="#/detail" class="black-text">
                           <i class="material-icons circle gray">done</i>
                           <span class="title">スペイン</span>
                           <div>
@@ -83,7 +83,7 @@
                       </a>
                   </li>
                   <li class="collection-item avatar">
-                      <a href="/#/detail" class="black-text">
+                      <a href="#/detail" class="black-text">
                           <i class="material-icons circle gray">done</i>
                           <span class="title">渡嘉敷島</span>
                           <div>
@@ -96,7 +96,7 @@
                       </a>
                   </li>
                   <li class="collection-item avatar">
-                      <a href="/#/detail" class="black-text">
+                      <a href="#/detail" class="black-text">
                           <i class="material-icons circle gray">done</i>
                           <span class="title">鳥取</span>
                           <div>
@@ -107,7 +107,7 @@
                       </a>
                   </li>
                   <li class="collection-item avatar">
-                      <a href="/#/detail" class="black-text">
+                      <a href="#/detail" class="black-text">
                           <i class="material-icons circle gray">done</i>
                           <span class="title">東京</span>
                           <div>
@@ -117,7 +117,7 @@
                       </a>
                   </li>
               </ul>
-              <a href="/#/new" class="newListBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+              <a href="#/new" class="newListBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
           </div>
       </template>
 
@@ -240,7 +240,7 @@
                       </ul>
                   </li>
               </ul>
-              <a href="./edit.html" class="editBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
+              <a href="#/edit" class="editBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
           </div>
       </template>
 
@@ -257,12 +257,12 @@
                               <form class="col s12">
                                   <div class="row new_placeDaysRow">
                                       <div class="input-field col s6">
-                                          <input placeholder="アラスカ" id="place" type="text" class="validate">
-                                          <label for="place">行き先</label>
+                                          <input placeholder="アラスカ" id="new_place" type="text" class="validate">
+                                          <label for="new_place">行き先</label>
                                       </div>
                                       <div class="input-field col s6">
-                                          <input placeholder="２週間" id="days" type="text" class="validate">
-                                          <label for="place">日数</label>
+                                          <input placeholder="２週間" id="new_days" type="text" class="validate">
+                                          <label for="new_days">日数</label>
                                       </div>
                                   </div>
                                   <div class="chips chips-placeholder">
@@ -281,6 +281,58 @@
                           <ul class="collection">
                               <li class="collection-item">
                                   <input class="new_listItemForm" type="text" placeholder="コンタクト">
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+              </ul>
+              <button type="submit" class="doneBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">done_all</i></button>
+          </div>
+      </template>
+
+      <template id="l-edit">
+          <div>
+              <ul class="collapsible" data-collapsible="expandable">
+                  <li>
+                      <div class="collapsible-header active teal-text">
+                          旅情報
+                          <i class="material-icons edit_headerIcon">keyboard_arrow_down</i>
+                      </div>
+                      <div class="collapsible-body">
+                          <div class="row">
+                              <form class="col s12">
+                                  <div class="row edit_placeDaysRow">
+                                      <div class="input-field col s6">
+                                          <input placeholder="アラスカ" id="edit_place" type="text" class="validate" value="アラスカ">
+                                          <label for="edit_place">行き先</label>
+                                      </div>
+                                      <div class="input-field col s6">
+                                          <input placeholder="２週間" id="edit_days" type="text" class="validate" value="２週間">
+                                          <label for="edit_days">日数</label>
+                                      </div>
+                                  </div>
+                                  <div class="chips chips-placeholder">
+                                      <input class="input" placeholder="タグ">
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="collapsible-header active teal-text">
+                          もちものリスト
+                          <i class="material-icons edit_headerIcon">keyboard_arrow_down</i>
+                      </div>
+                      <div class="collapsible-body">
+                          <ul class="collection">
+                              <li class="collection-item"><div>パスポート<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
+                              <li class="collection-item"><div>保険のコピー<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
+                              <li class="collection-item"><div>メガネ<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
+                              <li class="collection-item"><div>ヒートテック<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
+                              <li class="collection-item"><div>スマホの充電器<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
+                              <li class="collection-item"><div>カメラ<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
+                              <li class="collection-item">
+                                  <input class="edit_listItemForm" type="text" placeholder="コンタクト">
                               </li>
                           </ul>
                       </div>
