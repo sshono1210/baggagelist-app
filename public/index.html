@@ -11,7 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="https://unpkg.com/vue@2.0.3/dist/vue.min.js"></script>
     <script src="https://unpkg.com/vue-router@2.0.1"></script>
-    <script type="text/javascript" src="./common.js"></script>
+    <script type="text/javascript" src="assets/js/common.bundle.js"></script>
+    <!--<script type="text/javascript" src="common.js"></script>-->
   </head>
   <body>
       <!--ヘッダー-->
@@ -45,77 +46,76 @@
       <template id="l-index">
           <div>
               <ul class="collection">
-                  <li class="collection-item avatar">
+                  <li class="collection-item avatar" v-for="trip in trips">
                       <a href="#/detail" class="black-text">
-                          <i class="material-icons circle blue">insert_emoticon</i>
-                          <span class="title">ベトナム</span>
+                          <i class="material-icons circle blue" v-if="trip.state">mode_edit</i>
+                          <i class="material-icons circle light-green" v-else>done</i>
+                          <span class="title">{{trip.place}}</span>
                           <div>
-                              <div class="chip">アジア</div>
-                              <div class="chip">一人旅</div>
-                              <div class="chip">海外</div>
+                              <div class="chip" v-for="tag in trip.tags">{{tag}}</div>
                           </div>
-                          <p>１ヶ月</p>
+                          <p>{{trip.days}}</p>
                       </a>
                   </li>
-                  <li class="collection-item avatar">
-                      <a href="#/detail" class="black-text">
-                          <i class="material-icons circle light-green">mode_edit</i>
-                          <span class="title">アラスカ</span>
-                          <div>
-                              <div class="chip">冬</div>
-                              <div class="chip">一人旅</div>
-                              <div class="chip">海外</div>
-                              <div class="chip">アメリカ</div>
-                          </div>
-                          <p>２週間</p>
-                      </a>
-                  </li>
-                  <li class="collection-item avatar">
-                      <a href="#/detail" class="black-text">
-                          <i class="material-icons circle gray">done</i>
-                          <span class="title">スペイン</span>
-                          <div>
-                              <div class="chip">ヨーロッパ</div>
-                              <div class="chip">留学</div>
-                              <div class="chip">海外</div>
-                          </div>
-                          <p>１ヶ月</p>
-                      </a>
-                  </li>
-                  <li class="collection-item avatar">
-                      <a href="#/detail" class="black-text">
-                          <i class="material-icons circle gray">done</i>
-                          <span class="title">渡嘉敷島</span>
-                          <div>
-                              <div class="chip">国内</div>
-                              <div class="chip">一人旅</div>
-                              <div class="chip">海</div>
-                              <div class="chip">夏</div>
-                          </div>
-                          <p>３泊４日</p>
-                      </a>
-                  </li>
-                  <li class="collection-item avatar">
-                      <a href="#/detail" class="black-text">
-                          <i class="material-icons circle gray">done</i>
-                          <span class="title">鳥取</span>
-                          <div>
-                              <div class="chip">一人旅</div>
-                              <div class="chip">国内</div>
-                          </div>
-                          <p>４泊５日</p>
-                      </a>
-                  </li>
-                  <li class="collection-item avatar">
-                      <a href="#/detail" class="black-text">
-                          <i class="material-icons circle gray">done</i>
-                          <span class="title">東京</span>
-                          <div>
-                              <div class="chip">仕事</div>
-                          </div>
-                          <p>１泊</p>
-                      </a>
-                  </li>
+                  <!--<li class="collection-item avatar">-->
+                      <!--<a href="#/detail" class="black-text">-->
+                          <!--<i class="material-icons circle light-green">mode_edit</i>-->
+                          <!--<span class="title">アラスカ</span>-->
+                          <!--<div>-->
+                              <!--<div class="chip">冬</div>-->
+                              <!--<div class="chip">一人旅</div>-->
+                              <!--<div class="chip">海外</div>-->
+                              <!--<div class="chip">アメリカ</div>-->
+                          <!--</div>-->
+                          <!--<p>２週間</p>-->
+                      <!--</a>-->
+                  <!--</li>-->
+                  <!--<li class="collection-item avatar">-->
+                      <!--<a href="#/detail" class="black-text">-->
+                          <!--<i class="material-icons circle gray">done</i>-->
+                          <!--<span class="title">スペイン</span>-->
+                          <!--<div>-->
+                              <!--<div class="chip">ヨーロッパ</div>-->
+                              <!--<div class="chip">留学</div>-->
+                              <!--<div class="chip">海外</div>-->
+                          <!--</div>-->
+                          <!--<p>１ヶ月</p>-->
+                      <!--</a>-->
+                  <!--</li>-->
+                  <!--<li class="collection-item avatar">-->
+                      <!--<a href="#/detail" class="black-text">-->
+                          <!--<i class="material-icons circle gray">done</i>-->
+                          <!--<span class="title">渡嘉敷島</span>-->
+                          <!--<div>-->
+                              <!--<div class="chip">国内</div>-->
+                              <!--<div class="chip">一人旅</div>-->
+                              <!--<div class="chip">海</div>-->
+                              <!--<div class="chip">夏</div>-->
+                          <!--</div>-->
+                          <!--<p>３泊４日</p>-->
+                      <!--</a>-->
+                  <!--</li>-->
+                  <!--<li class="collection-item avatar">-->
+                      <!--<a href="#/detail" class="black-text">-->
+                          <!--<i class="material-icons circle gray">done</i>-->
+                          <!--<span class="title">鳥取</span>-->
+                          <!--<div>-->
+                              <!--<div class="chip">一人旅</div>-->
+                              <!--<div class="chip">国内</div>-->
+                          <!--</div>-->
+                          <!--<p>４泊５日</p>-->
+                      <!--</a>-->
+                  <!--</li>-->
+                  <!--<li class="collection-item avatar">-->
+                      <!--<a href="#/detail" class="black-text">-->
+                          <!--<i class="material-icons circle gray">done</i>-->
+                          <!--<span class="title">東京</span>-->
+                          <!--<div>-->
+                              <!--<div class="chip">仕事</div>-->
+                          <!--</div>-->
+                          <!--<p>１泊</p>-->
+                      <!--</a>-->
+                  <!--</li>-->
               </ul>
               <a href="#/new" class="newListBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
           </div>
@@ -258,11 +258,11 @@
                                   <div class="row new_placeDaysRow">
                                       <div class="input-field col s6">
                                           <input placeholder="アラスカ" id="new_place" type="text" class="validate">
-                                          <label for="new_place">行き先</label>
+                                          <label for="new_place" class="active">行き先</label>
                                       </div>
                                       <div class="input-field col s6">
                                           <input placeholder="２週間" id="new_days" type="text" class="validate">
-                                          <label for="new_days">日数</label>
+                                          <label for="new_days" class="active">日数</label>
                                       </div>
                                   </div>
                                   <div class="chips chips-placeholder">
@@ -304,11 +304,11 @@
                                   <div class="row edit_placeDaysRow">
                                       <div class="input-field col s6">
                                           <input placeholder="アラスカ" id="edit_place" type="text" class="validate" value="アラスカ">
-                                          <label for="edit_place">行き先</label>
+                                          <label for="edit_place" class="active">行き先</label>
                                       </div>
                                       <div class="input-field col s6">
                                           <input placeholder="２週間" id="edit_days" type="text" class="validate" value="２週間">
-                                          <label for="edit_days">日数</label>
+                                          <label for="edit_days" class="active">日数</label>
                                       </div>
                                   </div>
                                   <div class="chips chips-placeholder">
