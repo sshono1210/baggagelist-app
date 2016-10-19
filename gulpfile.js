@@ -48,7 +48,7 @@ gulp.task("build",function(cb){
     runSequence([
         "sass",
         "jade",
-        //"webpack"
+        "webpack"
     ],cb);
 });
 
