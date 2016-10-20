@@ -36,24 +36,58 @@ const trips = [
         state: true,
         place: "アラスカ",
         days: "２週間",
-        tags: ["一人旅","北米", "冬"]
+        tags: ["一人旅","北米", "冬"],
+        items: [
+            "モッズコート",
+            "ニット帽",
+            "マネークリップ（お金、カード）",
+            "手袋",
+            "ムートンブーツ",
+            "ヴァセリン",
+            "ストール"
+        ]
+
     },
     {state: false,
         place: "北海道",
         days: "４泊５日",
-        tags: ["社員旅行","国内"]
+        tags: ["社員旅行","国内"],
+        items: [
+            "コート",
+            "ニット帽",
+            "マネークリップ（お金、カード）",
+            "手袋",
+            "リップクリーム",
+            "ストール"
+        ]
     },
     {
         state: false,
         place: "渡嘉敷島",
         days: "３泊４日",
-        tags: ["一人旅","国内"]
+        tags: ["一人旅","国内"],
+        items: [
+            "ラッシュガード",
+            "帽子",
+            "マネークリップ（お金、カード）",
+            "水着",
+            "ビーサン",
+            "海パン",
+            "バスタオル"
+        ]
     },
     {
         state: false,
         place: "ニュージーランド",
         days: "２週間",
-        tags: ["留学","南半球"]
+        tags: ["留学","南半球"],
+        items: [
+            "マウパ",
+            "パスポート",
+            "マネークリップ（お金、カード）",
+            "スニーカー",
+            "サングラス"
+        ]
     }
 ];
 
@@ -68,8 +102,8 @@ const trips = [
 // コンポーネントの作成
 var Index = Vue.extend({
     template: "#l-index",
-    created: ()=>{
-        this.$parent.trips = trips
+    created: function(){
+        parent.trips = trips
     }
     //data: ()=>{
     //    return {
@@ -79,15 +113,15 @@ var Index = Vue.extend({
 });
 var Detail = Vue.extend({
     template: '#l-detail',
-    data: ()=>{
+    data: function(){
         return {
             trip: null
         }
     },
-    created: ()=>{
+    created: function(){
         this.trip = this.$parent.trips[this.$parent.index];
     },
-    mounted: ()=>{
+    mounted: function() {
         console.log(this.$parent.trips);
         //Detail.list = list;
     }
@@ -121,7 +155,7 @@ $(()=>{
         el: "#app",
         data: {
             trips: trips,
-            index: 1
+            index: 2
         },
         router: router
     });
