@@ -57,65 +57,6 @@
                           <p>{{trip.days}}</p>
                       </a>
                   </li>
-                  <!--<li class="collection-item avatar">-->
-                      <!--<a href="#/detail" class="black-text">-->
-                          <!--<i class="material-icons circle light-green">mode_edit</i>-->
-                          <!--<span class="title">アラスカ</span>-->
-                          <!--<div>-->
-                              <!--<div class="chip">冬</div>-->
-                              <!--<div class="chip">一人旅</div>-->
-                              <!--<div class="chip">海外</div>-->
-                              <!--<div class="chip">アメリカ</div>-->
-                          <!--</div>-->
-                          <!--<p>２週間</p>-->
-                      <!--</a>-->
-                  <!--</li>-->
-                  <!--<li class="collection-item avatar">-->
-                      <!--<a href="#/detail" class="black-text">-->
-                          <!--<i class="material-icons circle gray">done</i>-->
-                          <!--<span class="title">スペイン</span>-->
-                          <!--<div>-->
-                              <!--<div class="chip">ヨーロッパ</div>-->
-                              <!--<div class="chip">留学</div>-->
-                              <!--<div class="chip">海外</div>-->
-                          <!--</div>-->
-                          <!--<p>１ヶ月</p>-->
-                      <!--</a>-->
-                  <!--</li>-->
-                  <!--<li class="collection-item avatar">-->
-                      <!--<a href="#/detail" class="black-text">-->
-                          <!--<i class="material-icons circle gray">done</i>-->
-                          <!--<span class="title">渡嘉敷島</span>-->
-                          <!--<div>-->
-                              <!--<div class="chip">国内</div>-->
-                              <!--<div class="chip">一人旅</div>-->
-                              <!--<div class="chip">海</div>-->
-                              <!--<div class="chip">夏</div>-->
-                          <!--</div>-->
-                          <!--<p>３泊４日</p>-->
-                      <!--</a>-->
-                  <!--</li>-->
-                  <!--<li class="collection-item avatar">-->
-                      <!--<a href="#/detail" class="black-text">-->
-                          <!--<i class="material-icons circle gray">done</i>-->
-                          <!--<span class="title">鳥取</span>-->
-                          <!--<div>-->
-                              <!--<div class="chip">一人旅</div>-->
-                              <!--<div class="chip">国内</div>-->
-                          <!--</div>-->
-                          <!--<p>４泊５日</p>-->
-                      <!--</a>-->
-                  <!--</li>-->
-                  <!--<li class="collection-item avatar">-->
-                      <!--<a href="#/detail" class="black-text">-->
-                          <!--<i class="material-icons circle gray">done</i>-->
-                          <!--<span class="title">東京</span>-->
-                          <!--<div>-->
-                              <!--<div class="chip">仕事</div>-->
-                          <!--</div>-->
-                          <!--<p>１泊</p>-->
-                      <!--</a>-->
-                  <!--</li>-->
               </ul>
               <a href="#/new" class="newListBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
           </div>
@@ -130,16 +71,16 @@
                           <form class="col s12">
                               <div class="row detail_placeDaysRow">
                                   <div class="input-field col s6">
-                                      <input disabled value="{{list.place}}" id="detail_place" type="text" class="validate black-text">
+                                      <input disabled :value="trip.place" id="detail_place" type="text" class="validate black-text">
                                       <label for="detail_place" class="active">行き先</label>
                                   </div>
                                   <div class="input-field col s6">
-                                      <input disabled value="{{list.days}}" id="detail_days" type="text" class="validate black-text">
+                                      <input disabled :value="trip.days" id="detail_days" type="text" class="validate black-text">
                                       <label for="detail_days" class="active">日数</label>
                                   </div>
                               </div>
                               <div>
-                                  <div class="chip" v-for="tag in list.tags">
+                                  <div class="chip" v-for="tag in trip.tags">
                                       {{tag}}
                                   </div>
                               </div>
@@ -148,86 +89,10 @@
                   </li>
                   <li>
                       <ul class="collection">
-                          <li class="collection-item" v-for="item in list.items">
+                          <li class="collection-item" v-for="item in trip.items">
                               <input type="checkbox" class="filled-in" id="1" checked="checked" />
                               <label for="1" class="black-text">{{item}}</label>
                           </li>
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="" checked="checked" />-->
-                              <!--<label for="" class="black-text">ESTA控え</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="3" checked="checked" />-->
-                              <!--<label for="3" class="black-text">マネークリップ（カード、お金）</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="4" checked="checked" />-->
-                              <!--<label for="4" class="black-text">両替</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="5" checked="checked" />-->
-                              <!--<label for="5" class="black-text">マウパ</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="6" checked="checked" />-->
-                              <!--<label for="6" class="black-text">ストール</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="7" checked="checked" />-->
-                              <!--<label for="7" class="black-text">コンタクト</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="8" checked="checked" />-->
-                              <!--<label for="8" class="black-text">タオル</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="9" checked="checked" />-->
-                              <!--<label for="9" class="black-text">メガネケース</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="10" checked="checked" />-->
-                              <!--<label for="10" class="black-text">ボトル</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="11" checked="checked" />-->
-                              <!--<label for="11" class="black-text">デニム</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="12" checked="checked" />-->
-                              <!--<label for="12" class="black-text">化粧水</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="13" checked="checked" />-->
-                              <!--<label for="13" class="black-text">下着</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="14" checked="checked" />-->
-                              <!--<label for="14" class="black-text">ジップロック</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="15" checked="checked" />-->
-                              <!--<label for="15" class="black-text">デジカメ</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="16" checked="checked" />-->
-                              <!--<label for="16" class="black-text">デジカメ充電器</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="17" checked="checked" />-->
-                              <!--<label for="17" class="black-text">スマホ</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="18" checked="checked" />-->
-                              <!--<label for="18" class="black-text">スマホ充電器</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="19" checked="checked" />-->
-                              <!--<label for="19" class="black-text">コットン、綿棒</label>-->
-                          <!--</li>-->
-                          <!--<li class="collection-item">-->
-                              <!--<input type="checkbox" class="filled-in" id="20" checked="checked" />-->
-                              <!--<label for="20" class="black-text">モッズコート</label>-->
-                          <!--</li>-->
                       </ul>
                   </li>
               </ul>
@@ -271,7 +136,7 @@
                       <div class="collapsible-body">
                           <ul class="collection">
                               <li class="collection-item">
-                                  <input class="new_listItemForm" type="text" placeholder="コンタクト">
+                                  <input class="new_tripItemForm" type="text" placeholder="コンタクト">
                               </li>
                           </ul>
                       </div>
@@ -336,9 +201,6 @@
       <script>
           $(function () {
               $(".button-collapse").sideNav();
-              $('.collapsible').collapsible({
-                  accordion : false
-              });
               $('.chips').material_chip();
               $('.chips-initial').material_chip({
                   data: [{
