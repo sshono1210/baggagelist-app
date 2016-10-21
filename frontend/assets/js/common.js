@@ -164,6 +164,9 @@ var New = Vue.extend({
         return {
             item: "",
             form: {
+                place: null,
+                days: null,
+                items: [null]
                 //place: "アメリカ",
                 //days: "２週間",
                 //tags: ["留学","南半球"],
@@ -179,13 +182,11 @@ var New = Vue.extend({
     },
     methods: {
         register: function(route){
-            this.$parent.trips.push(this.form)
+            this.$parent.trips.push(this.form);
             //console.log(route,this.item);
             ////console.log('item');
-            //localStorage.setItem("trip.first", JSON.stringify(object1));
-            //localStorage.setItem("trip.second", JSON.stringify(object2));
-            //var trip = JSON.parse(localStorage.getItem("trip.second"));
-            //console.log(trip);
+            localStorage.setItem("trips.first", JSON.stringify(this.form));
+            console.log(JSON.parse(localStorage.getItem("trips.first")));
         }
     }
 });

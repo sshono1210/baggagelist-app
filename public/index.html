@@ -149,13 +149,13 @@
                                           <!--</div>-->
                                       <!--</div>-->
                                   <!--</li>-->
-                                  <li class="collection-item">
-                                      <input class="new_tripItemForm" type="text" v-model="form.items" placeholder="コンタクト">
-                                  </li>
-                                  <li class="collection-item">
-                                      <input class="new_tripItemForm" type="text" v-model="form.items" placeholder="コンタクト">
+                                  <li class="collection-item" v-for="item,key in form.items">
+                                      <input class="new_tripItemForm" type="text" v-model="form.items[key]" placeholder="コンタクト">
+                                      <a @click="form.items.splice(key,1)">削除</a>
                                   </li>
                               </ul>
+                              <a @click="form.items = form.items.concat([null]);console.log(form.items)">項目追加</a>
+                              <a @click="console.log(form.items)">項目追加</a>
                           </div>
                       </li>
                   </ul>
