@@ -93,32 +93,32 @@ const trips = [
 ];
 
 // データの保存
-var object1 = {
-    state: false,
-    place: "ニュージーランド",
-    days: "２週間",
-    tags: ["留学","南半球"],
-    items: [
-        "マウパ",
-        "パスポート",
-        "マネークリップ（お金、カード）",
-        "スニーカー",
-        "サングラス"
-    ]
-};
-var object2 = {
-    state: false,
-    place: "アメリカ",
-    days: "２週間",
-    tags: ["留学","南半球"],
-    items: [
-        "マウパ",
-        "パスポート",
-        "マネークリップ（お金、カード）",
-        "スニーカー",
-        "サングラス"
-    ]
-};
+//var object1 = {
+//    state: false,
+//    place: "ニュージーランド",
+//    days: "２週間",
+//    tags: ["留学","南半球"],
+//    items: [
+//        "マウパ",
+//        "パスポート",
+//        "マネークリップ（お金、カード）",
+//        "スニーカー",
+//        "サングラス"
+//    ]
+//};
+//var object2 = {
+//    state: false,
+//    place: "アメリカ",
+//    days: "２週間",
+//    tags: ["留学","南半球"],
+//    items: [
+//        "マウパ",
+//        "パスポート",
+//        "マネークリップ（お金、カード）",
+//        "スニーカー",
+//        "サングラス"
+//    ]
+//};
 //localStorage.setItem("test", JSON.stringify(object));
 //console.log(JSON.parse(localStorage.getItem("test")));
 // データの取得
@@ -152,6 +152,7 @@ var Detail = Vue.extend({
         console.log(this.$parent.trips);
     }
 });
+
 var New = Vue.extend({
     template: '#l-new',
 
@@ -185,8 +186,8 @@ var New = Vue.extend({
             this.$parent.trips.push(this.form);
             //console.log(route,this.item);
             ////console.log('item');
-            localStorage.setItem("trips.first", JSON.stringify(this.form));
-            console.log(JSON.parse(localStorage.getItem("trips.first")));
+            //localStorage.setItem("trips", JSON.stringify(this.form));
+            //console.log(JSON.parse(localStorage.getItem("trips")));
         }
     }
 });
@@ -217,12 +218,18 @@ const router = new VueRouter({
     routes:routes // routes: routes の短縮表記
 });
 
+
+
 $(()=>{
     var app = new Vue({
         el: "#app",
         data: {
             trips: trips,
             index: 0
+        },
+        created: function(){
+            //localStorage.clear();
+
         },
         router: router
     });
