@@ -21,12 +21,12 @@
             <a href="#!" class="brand-logo">Baggage List</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/">リスト一覧</a></li>
+                <li><a href="#">リスト一覧</a></li>
                 <li><a href="#/new">リスト作成</a></li>
                 <!--<li><a href="./modules.html">モジュール作成</a></li>-->
                 </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li><a href="/">リスト一覧</a></li>
+                <li><a href="#">リスト一覧</a></li>
                 <li><a href="#/new">リスト作成</a></li>
                 <!--<li><a href="./modules.html">モジュール作成</a></li>-->
             </ul>
@@ -90,7 +90,7 @@
                   <li>
                       <ul class="collection">
                           <li class="collection-item" v-for="item in trip.items">
-                              <input type="checkbox" class="filled-in" :id="1" checked="checked" />
+                              <input type="checkbox" class="filled-in" id="1" checked="checked" />
                               <label for="1" class="black-text">{{item}}</label>
                           </li>
                       </ul>
@@ -102,47 +102,65 @@
 
       <template id="l-new">
           <div>
-              <ul class="collapsible" data-collapsible="expandable">
-                  <li>
-                      <div class="collapsible-header active teal-text">
-                          旅情報
-                          <i class="material-icons new_headerIcon">keyboard_arrow_down</i>
-                      </div>
-                      <div class="collapsible-body">
-                          <div class="row">
-                              <form class="col s12">
-                                  <div class="row new_placeDaysRow">
-                                      <div class="input-field col s6">
-                                          <input placeholder="アラスカ" id="new_place" type="text" class="validate">
-                                          <label for="new_place" class="active">行き先</label>
-                                      </div>
-                                      <div class="input-field col s6">
-                                          <input placeholder="２週間" id="new_days" type="text" class="validate">
-                                          <label for="new_days" class="active">日数</label>
-                                      </div>
-                                  </div>
-                                  <div class="chips chips-placeholder">
-                                      <input class="input" placeholder="タグ">
-                                  </div>
-                              </form>
+              <!--<form>-->
+                  <ul class="collapsible" data-collapsible="expandable">
+                      <li>
+                          <div class="collapsible-header active teal-text">
+                              旅情報
+                              <i class="material-icons new_headerIcon">keyboard_arrow_down</i>
                           </div>
-                      </div>
-                  </li>
-                  <li>
-                      <div class="collapsible-header active teal-text">
-                          もちものリスト
-                          <i class="material-icons new_headerIcon">keyboard_arrow_down</i>
-                      </div>
-                      <div class="collapsible-body">
-                          <ul class="collection">
-                              <li class="collection-item">
-                                  <input class="new_tripItemForm" type="text" placeholder="コンタクト">
-                              </li>
-                          </ul>
-                      </div>
-                  </li>
-              </ul>
-              <button type="submit" class="doneBtn btn-floating btn-large waves-effect waves-light red"><i class="material-icons">done_all</i></button>
+                          <div class="collapsible-body">
+                              <div class="row">
+                                  <div class="col s12">
+                                      <div class="row new_placeDaysRow">
+                                          <div class="input-field col s6">
+                                              <input placeholder="アラスカ" id="new_place" type="text" class="validate" name="place" v-model="form.place">
+                                              <label for="new_place" class="active">行き先</label>
+                                          </div>
+                                          <div class="input-field col s6">
+                                              <input placeholder="２週間" id="new_days" type="text" class="validate" name="days"  v-model="form.days">
+                                              <label for="new_days" class="active">日数</label>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="input-field col s12">
+                                              <div class="chips chips-placeholder">
+                                                  <input class="input" placeholder="タグ" v-model="form.name">
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </li>
+                      <li>
+                          <div class="collapsible-header active teal-text">
+                              もちものリスト
+                              <i class="material-icons new_headerIcon">keyboard_arrow_down</i>
+                          </div>
+                          <div class="collapsible-body">
+                              <ul class="collection">
+                                  <!--<li class="collection-item"><div>あいてむ４<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>-->
+                                  <!--<li class="collection-item">-->
+                                      <!--<div>-->
+                                          <!--<div class="row new_tripItemRow">-->
+                                              <!--<input class="new_tripItemForm col s11" type="text" v-model="form.items" value="あいてむ１">-->
+                                              <!--<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a>-->
+                                          <!--</div>-->
+                                      <!--</div>-->
+                                  <!--</li>-->
+                                  <li class="collection-item">
+                                      <input class="new_tripItemForm" type="text" v-model="form.items" placeholder="コンタクト">
+                                  </li>
+                                  <li class="collection-item">
+                                      <input class="new_tripItemForm" type="text" v-model="form.items" placeholder="コンタクト">
+                                  </li>
+                              </ul>
+                          </div>
+                      </li>
+                  </ul>
+                  <button class="doneBtn btn-floating btn-large waves-effect waves-light red" @click="register('new')"><i class="material-icons">done_all</i></button>
+              <!--</form>-->
           </div>
       </template>
 
@@ -156,21 +174,25 @@
                       </div>
                       <div class="collapsible-body">
                           <div class="row">
-                              <form class="col s12">
+                              <div class="col s12">
                                   <div class="row edit_placeDaysRow">
                                       <div class="input-field col s6">
-                                          <input placeholder="アラスカ" id="edit_place" type="text" class="validate" value="アラスカ">
+                                          <input placeholder="アラスカ" id="edit_place" type="text" class="validate" :value="trip.place">
                                           <label for="edit_place" class="active">行き先</label>
                                       </div>
                                       <div class="input-field col s6">
-                                          <input placeholder="２週間" id="edit_days" type="text" class="validate" value="２週間">
+                                          <input placeholder="２週間" id="edit_days" type="text" class="validate" :value="trip.days">
                                           <label for="edit_days" class="active">日数</label>
                                       </div>
                                   </div>
-                                  <div class="chips chips-placeholder">
-                                      <input class="input" placeholder="タグ">
+                                  <div class="row">
+                                      <div class="input-field col s12">
+                                          <div class="chips chips-placeholder">
+                                              <input class="input" placeholder="タグ">
+                                          </div>
+                                      </div>
                                   </div>
-                              </form>
+                              </div>
                           </div>
                       </div>
                   </li>
@@ -181,14 +203,9 @@
                       </div>
                       <div class="collapsible-body">
                           <ul class="collection">
-                              <li class="collection-item"><div>パスポート<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
-                              <li class="collection-item"><div>保険のコピー<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
-                              <li class="collection-item"><div>メガネ<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
-                              <li class="collection-item"><div>ヒートテック<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
-                              <li class="collection-item"><div>スマホの充電器<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
-                              <li class="collection-item"><div>カメラ<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
+                              <li class="collection-item" v-for="item in trip.items"><div>{{item}}<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>
                               <li class="collection-item">
-                                  <input class="edit_listItemForm" type="text" placeholder="コンタクト">
+                                  <input class="edit_tripItemForm" type="text" placeholder="コンタクト">
                               </li>
                           </ul>
                       </div>
@@ -201,25 +218,6 @@
       <script>
           $(function () {
               $(".button-collapse").sideNav();
-              $('.chips').material_chip();
-              $('.chips-initial').material_chip({
-                  data: [{
-                      tag: '海'
-                  }, {
-                      tag: '山'
-                  }, {
-                      tag: '川'
-                  }]
-              });
-              $('.chips-placeholder').material_chip({
-                  placeholder: 'タグ',
-                  secondaryPlaceholder: 'タグ'
-              });
-              var chip = {
-                  tag: 'chip content',
-                  image: '', //optional
-                  id: 1 //optional
-              };
           });
       </script>
 

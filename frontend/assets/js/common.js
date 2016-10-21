@@ -1,5 +1,6 @@
 'use strict';
 var collapsible = require("./modules/collapsible.js");
+var chips = require("./modules/chips.js");
 
 const trips = [
     {
@@ -92,8 +93,34 @@ const trips = [
 ];
 
 // データの保存
+var object1 = {
+    state: false,
+    place: "ニュージーランド",
+    days: "２週間",
+    tags: ["留学","南半球"],
+    items: [
+        "マウパ",
+        "パスポート",
+        "マネークリップ（お金、カード）",
+        "スニーカー",
+        "サングラス"
+    ]
+};
+var object2 = {
+    state: false,
+    place: "アメリカ",
+    days: "２週間",
+    tags: ["留学","南半球"],
+    items: [
+        "マウパ",
+        "パスポート",
+        "マネークリップ（お金、カード）",
+        "スニーカー",
+        "サングラス"
+    ]
+};
 //localStorage.setItem("test", JSON.stringify(object));
-//var datas = JSON.parse(localStorage.getItem("test"));
+//console.log(JSON.parse(localStorage.getItem("test")));
 // データの取得
 //for(var data in datas){
 //    console.log(datas[data]);
@@ -123,19 +150,58 @@ var Detail = Vue.extend({
     },
     mounted: function() {
         console.log(this.$parent.trips);
-        //Detail.list = list;
     }
 });
 var New = Vue.extend({
     template: '#l-new',
+
     mounted:()=>{
         collapsible();
+        chips();
+    },
+    //props: ['item'],
+    data: function(){
+        return {
+            item: "",
+            form: {
+                //place: "アメリカ",
+                //days: "２週間",
+                //tags: ["留学","南半球"],
+                //items: [
+                //    "マウパ",
+                //    "パスポート",
+                //    "マネークリップ（お金、カード）",
+                //    "スニーカー",
+                //    "サングラス"
+                //]
+            }
+        }
+    },
+    methods: {
+        register: function(route){
+            this.$parent.trips.push(this.form)
+            //console.log(route,this.item);
+            ////console.log('item');
+            //localStorage.setItem("trip.first", JSON.stringify(object1));
+            //localStorage.setItem("trip.second", JSON.stringify(object2));
+            //var trip = JSON.parse(localStorage.getItem("trip.second"));
+            //console.log(trip);
+        }
     }
 });
 var Edit = Vue.extend({
     template: '#l-edit',
+    data: function(){
+        return {
+            trip: null
+        }
+    },
+    created: function(){
+        this.trip = this.$parent.trips[this.$parent.index];
+    },
     mounted:()=>{
         collapsible();
+        chips();
     }
 });
 // ルーターの定義
@@ -155,7 +221,7 @@ $(()=>{
         el: "#app",
         data: {
             trips: trips,
-            index: 2
+            index: 0
         },
         router: router
     });
