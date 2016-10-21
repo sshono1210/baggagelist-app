@@ -2,129 +2,54 @@
 var collapsible = require("./modules/collapsible.js");
 var chips = require("./modules/chips.js");
 
-const trips = [
-    {
-        state: true,
-        place: "ベトナム",
-        days: "一ヶ月",
-        tags: ["一人旅","アジア"],
-        items: [
-            "パスポート",
-            "ESTA控え",
-            "マネークリップ（お金、カード）",
-            "マウパ",
-            "ストール",
-            "コンタクト",
-            "飛行機用枕"
-        ]
-    },
-    {
-        state: false,
-        place: "竹富島",
-        days: "１週間",
-        tags: ["友達","国内"],
-        items: [
-            "ラッシュガード",
-            "帽子",
-            "マネークリップ（お金、カード）",
-            "水着",
-            "ビーサン",
-            "海パン",
-            "バスタオル"
-        ]
-    },
-    {
-        state: true,
-        place: "アラスカ",
-        days: "２週間",
-        tags: ["一人旅","北米", "冬"],
-        items: [
-            "モッズコート",
-            "ニット帽",
-            "マネークリップ（お金、カード）",
-            "手袋",
-            "ムートンブーツ",
-            "ヴァセリン",
-            "ストール"
-        ]
-
-    },
-    {state: false,
-        place: "北海道",
-        days: "４泊５日",
-        tags: ["社員旅行","国内"],
-        items: [
-            "コート",
-            "ニット帽",
-            "マネークリップ（お金、カード）",
-            "手袋",
-            "リップクリーム",
-            "ストール"
-        ]
-    },
-    {
-        state: false,
-        place: "渡嘉敷島",
-        days: "３泊４日",
-        tags: ["一人旅","国内"],
-        items: [
-            "ラッシュガード",
-            "帽子",
-            "マネークリップ（お金、カード）",
-            "水着",
-            "ビーサン",
-            "海パン",
-            "バスタオル"
-        ]
-    },
-    {
-        state: false,
-        place: "ニュージーランド",
-        days: "２週間",
-        tags: ["留学","南半球"],
-        items: [
-            "マウパ",
-            "パスポート",
-            "マネークリップ（お金、カード）",
-            "スニーカー",
-            "サングラス"
-        ]
-    }
+// あとでLocalStorageから読み込むのでlet（テストデータ）
+let trips = [
+    //{
+    //    state: true,
+    //    place: "ベトナム",
+    //    days: "一ヶ月",
+    //    tags: ["一人旅","アジア"],
+    //    items: [
+    //        "パスポート",
+    //        "ESTA控え",
+    //        "マネークリップ（お金、カード）",
+    //        "マウパ",
+    //        "ストール",
+    //        "コンタクト",
+    //        "飛行機用枕"
+    //    ]
+    //},
+    //{
+    //    state: false,
+    //    place: "竹富島",
+    //    days: "１週間",
+    //    tags: ["友達","国内"],
+    //    items: [
+    //        "ラッシュガード",
+    //        "帽子",
+    //        "マネークリップ（お金、カード）",
+    //        "水着",
+    //        "ビーサン",
+    //        "海パン",
+    //        "バスタオル"
+    //    ]
+    //},
+    //{
+    //    state: true,
+    //    place: "アラスカ",
+    //    days: "２週間",
+    //    tags: ["一人旅","北米", "冬"],
+    //    items: [
+    //        "モッズコート",
+    //        "ニット帽",
+    //        "マネークリップ（お金、カード）",
+    //        "手袋",
+    //        "ムートンブーツ",
+    //        "ヴァセリン",
+    //        "ストール"
+    //    ]
+    //}
 ];
-
-// データの保存
-//var object1 = {
-//    state: false,
-//    place: "ニュージーランド",
-//    days: "２週間",
-//    tags: ["留学","南半球"],
-//    items: [
-//        "マウパ",
-//        "パスポート",
-//        "マネークリップ（お金、カード）",
-//        "スニーカー",
-//        "サングラス"
-//    ]
-//};
-//var object2 = {
-//    state: false,
-//    place: "アメリカ",
-//    days: "２週間",
-//    tags: ["留学","南半球"],
-//    items: [
-//        "マウパ",
-//        "パスポート",
-//        "マネークリップ（お金、カード）",
-//        "スニーカー",
-//        "サングラス"
-//    ]
-//};
-//localStorage.setItem("test", JSON.stringify(object));
-//console.log(JSON.parse(localStorage.getItem("test")));
-// データの取得
-//for(var data in datas){
-//    console.log(datas[data]);
-//}
 
 // コンポーネントの作成
 var Index = Vue.extend({
@@ -149,7 +74,7 @@ var Detail = Vue.extend({
         this.trip = this.$parent.trips[this.$parent.index];
     },
     mounted: function() {
-        console.log(this.$parent.trips);
+        //console.log(this.$parent.trips);
     }
 });
 
@@ -184,6 +109,7 @@ var New = Vue.extend({
     methods: {
         register: function(route){
             this.$parent.trips.push(this.form);
+            localStorage.setItem("trips",JSON.stringify(this.$parent.trips))
             //console.log(route,this.item);
             ////console.log('item');
             //localStorage.setItem("trips", JSON.stringify(this.form));
@@ -221,10 +147,17 @@ const router = new VueRouter({
 
 
 $(()=>{
+    // ローカルストレージのデータを取得
+    const storedData = localStorage.getItem("trips");
+
+    // ローカルストレージのデータが
+    if(storedData){ //ある時
+        trips = JSON.parse(storedData);
+    }
     var app = new Vue({
         el: "#app",
         data: {
-            trips: trips,
+            trips: trips, //ない時はテストデータが入る
             index: 0
         },
         created: function(){
