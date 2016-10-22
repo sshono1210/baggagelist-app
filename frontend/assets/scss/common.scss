@@ -6,8 +6,12 @@
   bottom: 1rem;
   right: 1rem;
 }
-// リスト詳細
-.edit_placeDaysRow,
+.draftBtn {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+}
+//.l-detail
 .detail_placeDaysRow {
   margin-top: 20px;
   margin-bottom: 0;
@@ -17,17 +21,40 @@
   margin-bottom: 0;
   border: none;
 }
-// リスト作成
-.edit_headerIcon,
+
+//.l-edit
+.edit_placeDaysRow {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.edit_headerIcon {
+  float: right;
+}
+.edit_placeDaysRow {
+  margin-top: 20px;
+}
+
+//.l-new
+.chips-placeholder {
+  margin-bottom: 0;
+}
+
 .new_headerIcon {
   float: right;
 }
-.edit_placeDaysRow,
 .new_placeDaysRow {
   margin-top: 20px;
+  margin-bottom: 0;
 }
-//.new_tripItemRow,
-//.edit_tripItemForm,
-//.new_tripItemForm {
-//  margin-bottom: 0;
-//}
+.new_tripItemRow {
+  margin-bottom: 0;
+  .new_tripItemForm {
+    margin-bottom: 0;
+  }
+  .secondary-content {
+    padding-top: 5px;
+  }
+}
+.new_tripItemAddBtn {
+  display: block;
+}

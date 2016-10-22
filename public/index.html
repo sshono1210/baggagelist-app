@@ -48,8 +48,8 @@
               <ul class="collection">
                   <li class="collection-item avatar" v-for="trip in trips">
                       <a href="#/detail" class="black-text">
-                          <i class="material-icons circle blue" v-if="trip.state">mode_edit</i>
-                          <i class="material-icons circle light-green" v-else>done</i>
+                          <i class="material-icons circle light-green" v-if="trip.state">done</i>
+                          <i class="material-icons circle blue" v-else>mode_edit</i>
                           <span class="title">{{trip.place}}</span>
                           <div>
                               <div class="chip" v-for="tag in trip.tags">{{tag}}</div>
@@ -140,26 +140,21 @@
                           </div>
                           <div class="collapsible-body">
                               <ul class="collection">
-                                  <!--<li class="collection-item"><div>あいてむ４<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a></div></li>-->
-                                  <!--<li class="collection-item">-->
-                                      <!--<div>-->
-                                          <!--<div class="row new_tripItemRow">-->
-                                              <!--<input class="new_tripItemForm col s11" type="text" v-model="form.items" value="あいてむ１">-->
-                                              <!--<a href="#" class="secondary-content"><i class="material-icons">cancel</i></a>-->
-                                          <!--</div>-->
-                                      <!--</div>-->
-                                  <!--</li>-->
-                                  <li class="collection-item" v-for="item,key in form.items">
-                                      <input class="new_tripItemForm" type="text" v-model="form.items[key]" placeholder="コンタクト">
-                                      <a @click="form.items.splice(key,1)">削除</a>
+                                  <li class="collection-item new_tripItemLine" v-for="item,key in form.items">
+                                      <div>
+                                          <div class="row new_tripItemRow">
+                                              <input class="new_tripItemForm col s11" type="text" v-model="form.items[key]" placeholder="">
+                                              <a class="secondary-content" @click="form.items.splice(key,1)"><i class="material-icons">cancel</i></a>
+                                          </div>
+                                      </div>
                                   </li>
                               </ul>
-                              <a @click="form.items = form.items.concat([null]);console.log(form.items)">項目追加</a>
-                              <!--<a @click="console.log(form.items)">項目追加</a>-->
+                              <a class="new_tripItemAddBtn waves-effect waves-light btn white teal-text" @click="form.items = form.items.concat([null]);console.log(form.items)">項目追加</a>
                           </div>
                       </li>
                   </ul>
-                  <button class="doneBtn btn-floating btn-large waves-effect waves-light red" @click="register('new')"><i class="material-icons">done_all</i></button>
+                  <button class="draftBtn btn-floating btn-large waves-effect waves-light grey" @click="register('save')"><i class="material-icons">save</i></button>
+                  <button class="doneBtn btn-floating btn-large waves-effect waves-light red" @click="register('done')"><i class="material-icons">done_all</i></button>
               <!--</form>-->
           </div>
       </template>

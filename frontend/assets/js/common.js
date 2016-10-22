@@ -4,36 +4,36 @@ var chips = require("./modules/chips.js");
 
 // あとでLocalStorageから読み込むのでlet（テストデータ）
 let trips = [
-    //{
-    //    state: true,
-    //    place: "ベトナム",
-    //    days: "一ヶ月",
-    //    tags: ["一人旅","アジア"],
-    //    items: [
-    //        "パスポート",
-    //        "ESTA控え",
-    //        "マネークリップ（お金、カード）",
-    //        "マウパ",
-    //        "ストール",
-    //        "コンタクト",
-    //        "飛行機用枕"
-    //    ]
-    //},
-    //{
-    //    state: false,
-    //    place: "竹富島",
-    //    days: "１週間",
-    //    tags: ["友達","国内"],
-    //    items: [
-    //        "ラッシュガード",
-    //        "帽子",
-    //        "マネークリップ（お金、カード）",
-    //        "水着",
-    //        "ビーサン",
-    //        "海パン",
-    //        "バスタオル"
-    //    ]
-    //},
+    {
+        state: true,
+        place: "ベトナム（テストデータ）",
+        days: "一ヶ月",
+        tags: ["一人旅","アジア"],
+        items: [
+            "パスポート",
+            "ESTA控え",
+            "マネークリップ（お金、カード）",
+            "マウパ",
+            "ストール",
+            "コンタクト",
+            "飛行機用枕"
+        ]
+    },
+    {
+        state: false,
+        place: "竹富島（テストデータ）",
+        days: "１週間",
+        tags: ["友達","国内"],
+        items: [
+            "ラッシュガード",
+            "帽子",
+            "マネークリップ（お金、カード）",
+            "水着",
+            "ビーサン",
+            "海パン",
+            "バスタオル"
+        ]
+    }
     //{
     //    state: true,
     //    place: "アラスカ",
@@ -90,6 +90,7 @@ var New = Vue.extend({
         return {
             item: "",
             form: {
+                state: true,
                 place: null,
                 days: null,
                 items: [null]
@@ -107,9 +108,17 @@ var New = Vue.extend({
         }
     },
     methods: {
-        register: function(route){
+        register: function(state){
+            if(state === "save") {
+                this.form.state = false;
+                console.log("false");
+            }
+            if(state === "done") {
+                this.form.state = true;
+                console.log("true");
+            }
             this.$parent.trips.push(this.form);
-            localStorage.setItem("trips",JSON.stringify(this.$parent.trips))
+            localStorage.setItem("trips",JSON.stringify(this.$parent.trips));
             //console.log(route,this.item);
             ////console.log('item');
             //localStorage.setItem("trips", JSON.stringify(this.form));
@@ -158,7 +167,7 @@ $(()=>{
         el: "#app",
         data: {
             trips: trips, //ない時はテストデータが入る
-            index: 0
+            index: 2
         },
         created: function(){
             //localStorage.clear();
